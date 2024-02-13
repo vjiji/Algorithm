@@ -1,4 +1,6 @@
-function solution(s) {
-  var result = "*".repeat(s.length - 4) + s.slice(-4);
-  return result;
+
+function solution(phone_number) {
+  const starCount = phone_number.length - 4;
+  console.log(starCount);
+  return "*".repeat(starCount) + phone_number.slice(-4);
 }
