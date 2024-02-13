@@ -23,13 +23,45 @@ lines = [
   [2, 5],
   [3, 9],
 ]; // TC no.1
-// lines = [[-1, 1], [1, 3], [3, 9]];		// TC no.2
-// lines = [[0, 5], [3, 9], [1, 10]];		// TC no.3
+// lines = [
+//   [-1, 1],
+//   [1, 3],
+//   [3, 9],
+// ]; // TC no.2
+// lines = [
+//   [0, 5],
+//   [3, 9],
+//   [1, 10],
+// ]; // TC no.3
 console.log(solution(lines));
 
 // main end!
 
+/**
+ * 1. 세번 반복해서 0은 더 높은 숫자, 1은 더 낮은 숫자인 배열 3개를 만든다.
+ * 2. 비교해서 겹치는 부분을 뺀다.
+ */
+
 function solution(lines) {
-  var answer = 0;
-  return answer;
+  lines.sort((a, b) => (a[0] > b[0] ? 1 : a[0] < b[0] ? -1 : 0));
+  let overLappedLines = [];
+  console.log(lines);
+  for (let i = 0; i < lines.length - 1; i++) {
+    let arr = [];
+    arr.push(lines[i][0] > lines[i + 1][0] ? lines[i][0] : lines[i + 1][0]);
+    arr.push(lines[i][1] < lines[i + 1][1] ? lines[i][1] : lines[i + 1][1]);
+    overLappedLines.push(arr);
+  }
+  return overLappedLines[0][1] <= overLappedLines[0][0]
+    ? overLappedLines[1][1] <= overLappedLines[1][0]
+      ? 0
+      : overLappedLines[1][1] - overLappedLines[1][0]
+    : overLappedLines[0][1] <= overLappedLines[1][0]
+    ? overLappedLines[0][1] -
+      overLappedLines[0][0] +
+      (overLappedLines[1][1] - overLappedLines[1][0])
+    : overLappedLines[0][1] -
+      overLappedLines[0][0] +
+      (overLappedLines[1][1] - overLappedLines[1][0]) -
+      (overLappedLines[0][1] - overLappedLines[1][0]);
 }
