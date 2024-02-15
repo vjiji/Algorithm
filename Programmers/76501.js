@@ -20,7 +20,7 @@ console.log(solution(absolutes, signs));
 // main end!
 
 function solution(absolutes, signs) {
-  var answer = 0;
+  let answer = 0;
   for (let i = 0; i < signs.length; i++) {
     if (signs[i]) {
       answer += absolutes[i];

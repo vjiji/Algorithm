@@ -19,22 +19,16 @@ return 값이 1 이상 2,000,000,000 이하의 정수가 되는 올바른 입력
 
 // main start!
 
-숫자 = 0; // TC no.1
-// 숫자 = 1;		// TC no.2
-// 숫자 = 2;		// TC no.3
-// 숫자 = 3;		// TC no.4
-// 숫자 = 4;		// TC no.5
-// 숫자 = 5;		// TC no.6
-// 숫자 = 6;		// TC no.7
-// 숫자 = 7;		// TC no.8
-// 숫자 = 8;		// TC no.9
-// 숫자 = 9;		// TC no.10
+// 숫자 = "one4seveneight";
+숫자 = "23four5six7six";
+// 숫자 = "2three45sixseven";
+// 숫자 = "123";
 console.log(solution(숫자));
 
 // main end!
 
 function solution(s) {
-  let numbers = [
+  const numbers = [
     "zero",
     "one",
     "two",
@@ -46,12 +40,23 @@ function solution(s) {
     "eight",
     "nine",
   ];
-  var answer = s;
-
-  for (let i = 0; i < numbers.length; i++) {
-    let arr = answer.split(numbers[i]);
-    answer = arr.join(i);
+  for (let i = 0; i < numbers.length; ) {
+    if (s.includes(numbers[i])) {
+      s = s.replace(numbers[i], i);
+    } else {
+      i++;
+    }
   }
 
-  return Number(answer);
+  return s / 1;
 }
+
+// 10:00
+
+/*
+1. replaceAll()
+2. split(), join()
+3. 정규식
+*/
+
+// console.log("23four5six7six".replaceAll("six", "zzz"));
