@@ -11,17 +11,13 @@ phone_number는 길이 4 이상, 20이하인 문자열입니다.
 // main start!
 
 phone_number = "01033334444"; // TC no.1
-// phone_number = "027778888";		// TC no.2
+phone_number = "4124";
+phone_number = "027778888"; // TC no.2
 console.log(solution(phone_number));
 
 // main end!
 
 function solution(phone_number) {
-  let answer = "";
-  let len = phone_number.length;
-  for (let i = 0; i < len; i++) {
-    if (i >= len - 4) answer += phone_number[i];
-    else answer += "*";
-  }
-  return answer;
+  const starCount = phone_number.length - 4;
+  return "".padStart(starCount, "*") + phone_number.slice(-4);
 }

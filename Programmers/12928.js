@@ -8,18 +8,32 @@ n은 0 이상 3000이하인 정수입니다.
  */
 // main start!
 
-n = 12; // TC no.1
-// n = 5;		// TC no.2
+// n = 12; // TC no.1
+// n = 5; // TC no.2
+n = 12;
 console.log(solution(n));
 
 // main end!
 
 function solution(n) {
-  let answer = 0;
-  for (let i = 0; i <= n; i++) {
-    if (n % i === 0) {
-      answer += i;
+  let answer = [1, n];
+  if (n === 0 || n === 1) {
+    return n;
+  } else {
+    for (let i = 2; i < n; i++) {
+      let m = n;
+      let x = 1;
+      while (m % i === 0) {
+        answer.push(i ** x);
+        if (i ** x === m / i) {
+          break;
+        }
+        answer.push(m / i);
+        m = m / i;
+        x++;
+      }
     }
   }
-  return answer;
+  let arr = new Set(answer);
+  return [...arr].reduce((a, b) => a + b);
 }
